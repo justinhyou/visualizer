@@ -1,0 +1,4 @@
+Connect to connections
+
+Access to static hierarchy data
+Access to user profile information (as is)
