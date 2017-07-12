@@ -1,1 +1,6 @@
-"asdf"
+{"RANK_CD": "AVI", "SUPERVISOR_BUSN_NAME": "Alexander Graf", "BUSINESS_LAST_NAME": "Held", "RANK_DESCR": "Account Vice President", "BUSINESS_FIRST_NAME": "Andrew"}
+{"RANK_CD": "EE", "SUPERVISOR_BUSN_NAME": "", "BUSINESS_LAST_NAME": "Healy", "RANK_DESCR": "Employee", "BUSINESS_FIRST_NAME": "Jelly"}
+{"RANK_CD": "AD", "SUPERVISOR_BUSN_NAME": "Alexander Graf", "BUSINESS_LAST_NAME": "Cross", "RANK_DESCR": "Associate Director", "BUSINESS_FIRST_NAME": "Pearl"}
+{"RANK_CD": "D", "SUPERVISOR_BUSN_NAME": "", "BUSINESS_LAST_NAME": "Graf", "RANK_DESCR": "Director", "BUSINESS_FIRST_NAME": "Alexander"}
+{"RANK_CD": "D", "SUPERVISOR_BUSN_NAME": "", "BUSINESS_LAST_NAME": "Graf", "RANK_DESCR": "Director", "BUSINESS_FIRST_NAME": "Anton"}
+{"RANK_CD": "D", "SUPERVISOR_BUSN_NAME": "", "BUSINESS_LAST_NAME": "Clarke", "RANK_DESCR": "Director", "BUSINESS_FIRST_NAME": "Paula"}
