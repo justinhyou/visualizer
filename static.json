@@ -1,0 +1,272 @@
+{
+ "name": "flare",
+ "description": "flare",
+ "children": [
+   {
+     "description": "Tom Naratil",
+     "name": "WMA",
+     "children": [
+      {"description": "Brian Hull",
+        "name": "Client AG",
+        "size": "GEB"},
+      {"description": "Michael Blum",
+        "name": "Banking Group",
+        "size": "GEB"},
+      {"description": "Jason Chandler",
+        "name": "Investment P&S",
+        "size": "GEB"},
+      {"description": "Kathleen Lynch",
+        "name": "Operations",
+        "size": "GEB"},
+      {"description": "Michael Crowl",
+        "name": "Legal",
+        "size": "GEB"},
+      {"description": "Paula Polito",
+        "name": "Client Strategy",
+        "size": "GEB"},
+      {"description": "Scott Bowen",
+        "name": "Finance",
+        "size": "GEB"}
+      ]
+    },
+   {
+     "description": "Zurg Zeltner",
+     "name": "WM",
+     "children": [
+      {"description": "Mark Haefele",
+        "name": "Investment",
+        "size": "GEB"},
+      {"description": "Josef Stadler",
+        "name": "Global UHNW",
+        "size": "GEB"},
+      {"description": "Christian Wiesendanger",
+        "name": "Investment P&S",
+        "size": "GEB"},
+      {"description": "Dirk Klee",
+        "name": "Operations",
+        "size": "GEB"},
+      {"description": "Anton Simonet",
+        "name": "Switzerland",
+        "size": "GEB"},
+      {"description": "Edmund Koh",
+        "name": "Asia Pacific",
+        "size": "GEB"},
+      {"description": "Paul Raphael",
+        "name": "Europe & EM",
+        "size": "GEB"}
+      ]
+   },
+   {
+     "description": "Ulrich Koerner",
+     "name": "AM",
+     "children": [
+      {"description": "William Kennedy",
+        "name": "Client Coverage",
+        "size": "GEB"},
+      {"description": "Bill Ferri",
+        "name": "P&S",
+        "size": "GEB"},
+      {"description": "Suni Harford",
+        "name": "Investments",
+        "size": "GEB"},
+      {"description": "Thomas Wels",
+        "name": "Real Estate & Private Markets",
+        "size": "GEB"},
+      {"description": "Karin Oertli",
+        "name": "Switzerland",
+        "size": "GEB"},
+      {"description": "Karin Oertli",
+        "name": "EMEA",
+        "size": "GEB"},
+      {"description": "Bill Ferri",
+        "name": "Americas",
+        "size": "GEB"},
+      {"description": "Rene Buhlmann",
+        "name": "APAC",
+        "size": "GEB"}
+      ]
+   },
+   {
+     "description": "",
+     "name": "CC",
+     "children": [
+      {"description": "Kirt Gardner",
+        "name": "CFO",
+        "size": "GEB"},
+      {"description": "Christian Bluhm",
+        "name": "Risk Control",
+        "size": "GEB"},
+      {"description": "",
+        "name": "General Counsel",
+        "size": "GEB"},
+      {"description": "Axel Lehmann",
+        "name": "COO",
+        "children": [
+          {"description": "Seraina Zysset-Frey",
+           "name": "Chief of Staff",
+           "size": "MD"
+          },
+          {"description": "Angus Graham",
+           "name": "CFO",
+           "size": "GMD"
+          },
+          {"description": "Christian Gockenjan",
+           "name": "Risk",
+           "size": "MD"
+          },
+          {"description": "Marc Montanaro",
+           "name": "HR",
+           "size": "MD"
+          },
+          {"description": "Johna Jervoe",
+           "name": "Communications",
+           "size": "MD"
+          },
+          {"description": "Christopher Gelvin",
+           "name": "GCOO COO",
+           "size": "GND"
+          },
+          {"description": "Katrin Koch",
+           "name": "Group Corporate Services",
+           "size": "GMD"
+          },
+          {"description": "Harald Egger",
+           "name": "Group Sourcing",
+           "size": "MD"
+          },
+          {"description": "Ulrich Hoffmann",
+           "name": "Group Operations",
+           "size": "GMD"
+          },
+          {"description": "Michael Dargan",
+           "name": "Group Technology",
+           "children": [
+             {"name": "TSIT&Technology Services",
+               "description": "Paul McEwen",
+               "position": "GMD",
+               "children": [
+               {"name": "ISIT OPS",
+                 "description": "Noel Ferguson",
+                 "position": "MD",
+                 "children": [
+                 {"name": "SO Platform as a service",
+                   "description": "Nitin Potdar",
+                   "position": "ED",
+                   "children": [
+                   {"name": "SO PAAS Global Database Services",
+                     "description": "Jigar Gandhi",
+                      "position": "ED",
+                      "children": [
+                     {"name": "SO PAAS Database Oracle Operations",
+                       "description": "Selvam Muthusami",
+                       "position": "DI",
+                       "children": [
+                       {"name": "Hyobin Y.",
+                         "description": "Hyobin You",
+                         "position": "EE",
+                         "size": "EE"},
+                       {"name": "Sachin M.",
+                         "description": "Sachin Mehta",
+                         "position": "AD",
+                         "size": "AD"},
+                       {"name": "Magdalena T.",
+                         "description": "Magdalena Topalovic",
+                         "position": "EE",
+                         "size": "EE"}
+                     ]
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   },
+             {"description": "OTHERRRR",
+               "name": "OTHERRRRR",
+               "size":"GMD"
+             }
+           ]
+          }
+        ]
+      },
+      {"description": "Hubertus Kuelps",
+        "name": "Communications & Branding",
+        "size": "GEB"},
+      {"description": "Sabine Keller-Busse",
+        "name": "Human Resources",
+        "size": "GEB"},
+      {"description": "",
+        "name": "Regulatory & Governance",
+        "size": "GEB"}
+      ]
+   },
+   {
+     "description": "Andrea Orcel",
+     "name": "IB",
+     "children": [
+      {"description": "Ros Stephenson",
+        "name": "CCS Americas",
+        "size": "GEB"},
+      {"description": "Willliam Vereker",
+        "name": "CCS EMEA",
+        "size": "GEB"},
+      {"description": "Juan-Luis Perez",
+        "name": "Global Research",
+        "size": "GEB"},
+      {"description": "Robert Karofsky",
+        "name": "Global Equities",
+        "size": "GEB"},
+      {"description": "George Athanasopoulos",
+        "name": "Global FX, Rates & Credit",
+        "size": "GEB"},
+      {"description": "Beatriz Martin Jimenez",
+        "name": "COO",
+        "size": "GEB"},
+      {"description": "Emma Molvidson",
+        "name": "Chief of Staff",
+        "size": "GEB"},
+      {"description": "Nigel Bretton",
+        "name": "CFO",
+        "size": "GEB"},
+      {"description": "Bert Fuqua",
+        "name": "Legal",
+        "size": "GEB"},
+      {"description": "Mark Sanborn",
+        "name": "Chief Risk Officer",
+        "size": "GEB"},
+      {"description": "Siobhan McDonagh",
+        "name": "Human Resources",
+        "size": "GEB"}
+      ]
+   },
+   {
+     "description": "Martin Blessing",
+     "name": "UBS Region Switzerland",
+     "children": [
+      {"description": "Roger von Mentlen",
+        "name": "Personal Banking",
+        "size": "GEB"},
+      {"description": "Anton Simonet",
+        "name": "WM Switzerland",
+        "size": "GEB"},
+      {"description": "Christine Novakovic",
+        "name": "Corporate & Institutional Clients",
+        "size": "GEB"},
+      {"description": "Christine Novakovic",
+        "name": "IB Switzerland",
+        "size": "GEB"},
+      {"description": "Karin Oertli",
+        "name": "AM Switzerland",
+        "size": "GEB"},
+      {"description": "Reti Wabgker",
+        "name": "COO Switzerland",
+        "size": "GEB"},
+      {"description": "Damian Vogel",
+        "name": "Chief Risk Officer",
+        "size": "GEB"}
+      ]
+   }
+  ]
+}
