@@ -1,6 +1,19 @@
 <!DOCTYPE html>
+
+<head>
+<title>
+UBS Organizational Chart
+</title>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
 <meta charset="utf-8">
 <style>
+<link rel="stylesheet" type="text/css"
+  href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+<link rel="stylesheet" type="text/css" href="sequences.css"/>
+
 
 circle,
 path {
@@ -75,7 +88,7 @@ function format_number(x) {
 function format_description(d) {
   if (d.position == null) {
        var description = d.description;
-           return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + format_number(d.value) + ')';
+           return  '<b>' + d.name + '</b></br>'+ d.description + '<br> (' + d.size + ')'; /////////////CONNECTIONS DATA?
   }
   var description = d.description;
       return  '<b>' + d.name + '</b></br>'+ d.description + '<br> Position: ' + d.position;
@@ -97,7 +110,63 @@ function getAngle(d) {
 //     return (thetaDeg > 90) ? thetaDeg - 180 : thetaDeg;
 // }
 
+//EDITING 1
+function mouseover(d) {
+
+  var percentage = (100 * d.value / totalSize).toPrecision(3);
+  var percentageString = percentage + "%";
+  if (percentage < 0.1) {
+    percentageString = "< 0.1%";
+  }
+
+  d3.select("#percentage")
+      .text(percentageString);
+
+  d3.select("#explanation")
+      .style("visibility", "");
+
+  var sequenceArray = getAncestors(d);
+  updateBreadcrumbs(sequenceArray, percentageString);
+
+  // Fade all the segments.
+  d3.selectAll("path")
+      .style("opacity", 0.3);
+
+  // Then highlight only those that are an ancestor of the current segment.
+  vis.selectAll("path")
+      .filter(function(node) {
+                return (sequenceArray.indexOf(node) >= 0);
+              })
+      .style("opacity", 1);
+}
+
+// Restore everything to full opacity when moving off the visualization.
+function mouseleave(d) {
+
+  // Hide the breadcrumb trail
+  d3.select("#trail")
+      .style("visibility", "hidden");
+
+  // Deactivate all segments during transition.
+  d3.selectAll("path").on("mouseover", null);
+
+  // Transition each segment to full opacity and then reactivate it.
+  d3.selectAll("path")
+      .transition()
+      .duration(1000)
+      .style("opacity", 1)
+      .each("end", function() {
+              d3.select(this).on("mouseover", mouseover);
+            });
+
+  d3.select("#explanation")
+      .style("visibility", "hidden");
+}
+
+
 function mouseOverArc(d) {
+
+
 			 d3.select(this).attr("stroke","black")
 
           tooltip.html(format_description(d));
@@ -117,15 +186,43 @@ function mouseMoveArc (d) {
             .style("left", (d3.event.pageX+10)+"px");
 }
 
+function convertToSize (d) {
+  if (d.size === "GEB") {
+    return 1000
+  }
+  else if (d.size === "GMD") {
+    return 500
+  }
+  else if (d.size === "MD") {
+    return 250
+  }
+  else if (d.size === "ED") {
+    return 125
+  }
+  else if (d.size === "D") {
+    return 100
+  }
+  else if (d.size === "AD") {
+    return 50
+  }
+  else if (d.size === "AO") {
+    return 25
+  }
+  else if (d.size === "EE") {
+    return 10
+  }
+}
+
 var root_ = null;
-d3.json("flare-labeled.json", function(error, root) {
+d3.json("static.json", function(error, root) {
+//d3.json("flare-labeled.json", function(error, root) {
   if (error) return console.warn(error);
   // Compute the initial layout on the entire tree to sum sizes.
   // Also compute the full name and fill color for each node,
   // and stash the children so they can be restored as we descend.
 
   partition
-      .value(function(d) { return d.size; })
+      .value(function(d) { return convertToSize(d); }) //////////////////////////////////////////////////////here is SIZE: add function for converting "AD" to 100 etc.
       .nodes(root)
       .forEach(function(d) {
         d._children = d.children;
@@ -138,6 +235,7 @@ d3.json("flare-labeled.json", function(error, root) {
   partition
       .children(function(d, depth) { return depth < 2 ? d._children : null; })
       .value(function(d) { return d.sum; });
+
 
   var center = svg.append("circle")
       .attr("r", radius / 3)
@@ -171,7 +269,9 @@ d3.json("flare-labeled.json", function(error, root) {
             return d.x + d.dx / 2 > Math.PI ? "end" : "start";
           }
     })
-		.filter(filter_min_arc_size_text)
+              // .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(" + getAngle2(d) + ")"; })
+              // .style("text-anchor", "middle")
+    .filter(filter_min_arc_size_text)
     .attr("transform", function(d) {
       var angle = getAngle(d);
         if (angle<= 90 || angle>= 270) {
@@ -183,19 +283,50 @@ d3.json("flare-labeled.json", function(error, root) {
 		.attr("x", function(d) { return radius / 3 * d.depth; })
 		.attr("dx", "6") // margin
       .attr("dy", ".35em") // vertical-align
-		.text(function(d,i) {return d.name})
+		.text(function(d,i) {return nameCorrect(d)})
+    //.text(function(d,i) {return d.name})
 
+//NEW 1
+
+  function nameCorrect(d) {
+    var str = d.name;
+    var words = str.split(" ");
+    var newLine = '\r\n';
+
+    var result = "";
+    for (var i = 0; i<words.length-1; i++) {
+      result+=words[i]+'\n'
+    }
+
+    return result+words[words.length-1]
+  }
+
+//NEW 2
   function zoomIn(p) {
     if (p.depth > 1) p = p.parent;
     if (!p.children) return;
     zoom(p, p);
   }
 
+////EDITED
+//USE THIS TO DISPLAY TREE of HIERRCHY
+
+  function hierarch(p) {
+    if (p.parent != null) {
+      return hierarch(p.parent)+p.name;
+    } else {
+      return p.name
+    }
+  }
+
+////EDITED 2
+
   function zoomOut(p) {
     if (!p.parent) return;
     zoom(p.parent, p);
   }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////LOOK HERE! MAYBE SEARCH or SUGGESTED MATCH CLICK = ZOOM?
   // Zoom to the specified new root.
   function zoom(root, p) {
     if (document.documentElement.__transition__) return;
@@ -249,11 +380,7 @@ d3.json("flare-labeled.json", function(error, root) {
       path.transition()
           .style("fill-opacity", 1)
           .attrTween("d", function(d) { return arcTween.call(this, updateArc(d)); });
-
-
-
     });
-
 
 	 texts = texts.data(new_data, function(d) { return d.key; })
 
@@ -282,8 +409,6 @@ d3.json("flare-labeled.json", function(error, root) {
       .filter(filter_min_arc_size_text)
       .text(function(d,i) {return d.name})
 		.transition().delay(750).style("opacity", 1)
-
-
   }
 });
 
@@ -292,6 +417,8 @@ function key(d) {
   while (p.depth) k.push(p.name), p = p.parent;
   return k.reverse().join(".");
 }
+
+
 
 function fill(d) {
   var p = d;
@@ -335,40 +462,7 @@ d3.select("body").append("button")
 
 });
 
-var options = {
-	script: "pathToScript.php?",
-	varname: "variableName",
-	json: true,
-	maxresults: 35
-};
-var as = new bsn.AutoSuggest('idOfTextfield', options);
 
-//////////////////////////////// To DOOOO
-// 1. search that zooms into that match
-//  other search fields (i.e. in description, job position, etc.)
-
-// 2. editing capabilities?
-//  adding a form
-
-// 3. adding forms
-//  create new position
-
-// 4. show route followed
-//  somehow track which were clicked...
-
-// 5. bind text within its area (otherwise just don't show, make smaller, new line)
-
-// 6. misplacement of words on left at lowest level...
-
-// 7. larger, more stable personnel info
-
-//OTHER???
-
-// 1. AI: neural network to provide numerics to a "match" in the system
-
-// 2. chrome extension?????
-
-// 3. intra-JOBS integration
 
 </script>
 
